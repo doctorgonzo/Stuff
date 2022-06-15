@@ -9,4 +9,8 @@
         testkey = letter.GetValue(randLetter.Next(0, letter.Count)).ToString & rand.Next(0, 10).ToString & letter.GetValue(randLetter.Next(0, letter.Count)).ToString & rand.Next(0, 10).ToString & letter.GetValue(randLetter.Next(0, letter.Count)).ToString & rand.Next(0, 10).ToString & letter.GetValue(randLetter.Next(0, letter.Count)).ToString & rand.Next(0, 10).ToString & letter.GetValue(randLetter.Next(0, letter.Count)).ToString & rand.Next(0, 10).ToString & letter.GetValue(randLetter.Next(0, letter.Count)).ToString & rand.Next(0, 10).ToString
         txtKey.Text = testkey
     End Sub
+
+    Private Sub txtKey_TextChanged(sender As Object, e As EventArgs) Handles txtKey.TextChanged
+
+    End Sub
 End Class

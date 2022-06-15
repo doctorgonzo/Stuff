@@ -28,28 +28,31 @@ Partial Class frmMain
         '
         'btnStart
         '
-        Me.btnStart.Location = New System.Drawing.Point(102, 38)
+        Me.btnStart.Location = New System.Drawing.Point(136, 47)
+        Me.btnStart.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnStart.Name = "btnStart"
-        Me.btnStart.Size = New System.Drawing.Size(75, 23)
+        Me.btnStart.Size = New System.Drawing.Size(100, 28)
         Me.btnStart.TabIndex = 0
         Me.btnStart.Text = "Generate"
         Me.btnStart.UseVisualStyleBackColor = True
         '
         'txtKey
         '
-        Me.txtKey.Location = New System.Drawing.Point(12, 12)
+        Me.txtKey.Location = New System.Drawing.Point(16, 15)
+        Me.txtKey.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtKey.Name = "txtKey"
         Me.txtKey.ReadOnly = True
-        Me.txtKey.Size = New System.Drawing.Size(260, 20)
+        Me.txtKey.Size = New System.Drawing.Size(345, 22)
         Me.txtKey.TabIndex = 1
         '
         'frmMain
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(284, 71)
+        Me.ClientSize = New System.Drawing.Size(379, 87)
         Me.Controls.Add(Me.txtKey)
         Me.Controls.Add(Me.btnStart)
+        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Name = "frmMain"
         Me.Text = "Minecraft HaxX0r"
         Me.ResumeLayout(False)
