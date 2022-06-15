@@ -1,7 +1,5 @@
 ﻿Public Class Form3
     Dim offset As Integer = 10
-
-
     Private mouseOffset As Point
     Private isMouseDown As Boolean = False
 
@@ -54,9 +52,7 @@
             Beep()
             Beep()
             Beep()
-
         End If
         Me.Top += offset
-
     End Sub
 End Class

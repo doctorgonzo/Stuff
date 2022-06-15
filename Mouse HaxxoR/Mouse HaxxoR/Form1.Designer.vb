@@ -40,7 +40,6 @@ Partial Class Form1
         Me.btnChoosePoints = New System.Windows.Forms.Button()
         Me.lblChoosePoints = New System.Windows.Forms.Label()
         Me.btnMoveToAll = New System.Windows.Forms.Button()
-        Me.lblMultiSelect = New System.Windows.Forms.Label()
         Me.numRepeat = New System.Windows.Forms.NumericUpDown()
         Me.rdoPlayback = New System.Windows.Forms.RadioButton()
         Me.rdoRecord = New System.Windows.Forms.RadioButton()
@@ -53,31 +52,42 @@ Partial Class Form1
         Me.btnRecord = New System.Windows.Forms.Button()
         Me.btnPlay = New System.Windows.Forms.Button()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.GroupBox3 = New System.Windows.Forms.GroupBox()
+        Me.rdoRepeatClick = New System.Windows.Forms.RadioButton()
+        Me.numClicks = New System.Windows.Forms.NumericUpDown()
+        Me.btnMoveClickRepeat = New System.Windows.Forms.Button()
+        Me.numRepetitionSpeed = New System.Windows.Forms.NumericUpDown()
+        Me.lblRepetitionSpeed = New System.Windows.Forms.Label()
         Me.StatusStrip1.SuspendLayout()
         CType(Me.numSpeed, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.numRepeat, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
+        Me.GroupBox3.SuspendLayout()
+        CType(Me.numClicks, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.numRepetitionSpeed, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'lstMousePos
         '
         Me.lstMousePos.FormattingEnabled = True
+        Me.lstMousePos.ItemHeight = 16
         Me.lstMousePos.Location = New System.Drawing.Point(12, 12)
         Me.lstMousePos.Name = "lstMousePos"
         Me.lstMousePos.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended
-        Me.lstMousePos.Size = New System.Drawing.Size(104, 277)
+        Me.lstMousePos.Size = New System.Drawing.Size(104, 276)
         Me.lstMousePos.TabIndex = 2
         '
         'StatusStrip1
         '
         Me.StatusStrip1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
         Me.StatusStrip1.GripMargin = New System.Windows.Forms.Padding(0)
+        Me.StatusStrip1.ImageScalingSize = New System.Drawing.Size(20, 20)
         Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsMouseX, Me.tsMouseY})
         Me.StatusStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Flow
-        Me.StatusStrip1.Location = New System.Drawing.Point(0, 392)
+        Me.StatusStrip1.Location = New System.Drawing.Point(0, 499)
         Me.StatusStrip1.Name = "StatusStrip1"
-        Me.StatusStrip1.Size = New System.Drawing.Size(769, 20)
+        Me.StatusStrip1.Size = New System.Drawing.Size(945, 26)
         Me.StatusStrip1.SizingGrip = False
         Me.StatusStrip1.Stretch = False
         Me.StatusStrip1.TabIndex = 3
@@ -86,13 +96,13 @@ Partial Class Form1
         'tsMouseX
         '
         Me.tsMouseX.Name = "tsMouseX"
-        Me.tsMouseX.Size = New System.Drawing.Size(121, 15)
+        Me.tsMouseX.Size = New System.Drawing.Size(153, 20)
         Me.tsMouseX.Text = "ToolStripStatusLabel1"
         '
         'tsMouseY
         '
         Me.tsMouseY.Name = "tsMouseY"
-        Me.tsMouseY.Size = New System.Drawing.Size(121, 15)
+        Me.tsMouseY.Size = New System.Drawing.Size(153, 20)
         Me.tsMouseY.Text = "ToolStripStatusLabel2"
         '
         'Timer1
@@ -113,7 +123,7 @@ Partial Class Form1
         Me.Label1.AutoSize = True
         Me.Label1.Location = New System.Drawing.Point(343, 77)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(242, 13)
+        Me.Label1.Size = New System.Drawing.Size(301, 16)
         Me.Label1.TabIndex = 5
         Me.Label1.Text = "Moves the mouse to the location selected from list"
         '
@@ -131,7 +141,7 @@ Partial Class Form1
         Me.Label2.AutoSize = True
         Me.Label2.Location = New System.Drawing.Point(343, 107)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(301, 13)
+        Me.Label2.Size = New System.Drawing.Size(375, 16)
         Me.Label2.TabIndex = 5
         Me.Label2.Text = "Moves the mouse to selected location and performs a left click"
         '
@@ -140,7 +150,7 @@ Partial Class Form1
         Me.chkOnTop.AutoSize = True
         Me.chkOnTop.Location = New System.Drawing.Point(621, 6)
         Me.chkOnTop.Name = "chkOnTop"
-        Me.chkOnTop.Size = New System.Drawing.Size(148, 17)
+        Me.chkOnTop.Size = New System.Drawing.Size(178, 20)
         Me.chkOnTop.TabIndex = 0
         Me.chkOnTop.Text = "Keep this window on top?"
         Me.chkOnTop.UseVisualStyleBackColor = True
@@ -150,9 +160,9 @@ Partial Class Form1
         Me.lblInfo.AutoSize = True
         Me.lblInfo.Font = New System.Drawing.Font("Microsoft Sans Serif", 26.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblInfo.ForeColor = System.Drawing.Color.DarkRed
-        Me.lblInfo.Location = New System.Drawing.Point(15, 341)
+        Me.lblInfo.Location = New System.Drawing.Point(4, 447)
         Me.lblInfo.Name = "lblInfo"
-        Me.lblInfo.Size = New System.Drawing.Size(738, 39)
+        Me.lblInfo.Size = New System.Drawing.Size(929, 52)
         Me.lblInfo.TabIndex = 6
         Me.lblInfo.Text = "Press and hold space to record mouse position"
         '
@@ -160,16 +170,17 @@ Partial Class Form1
         '
         Me.numSpeed.Location = New System.Drawing.Point(126, 22)
         Me.numSpeed.Name = "numSpeed"
-        Me.numSpeed.Size = New System.Drawing.Size(54, 20)
+        Me.numSpeed.Size = New System.Drawing.Size(54, 22)
         Me.numSpeed.TabIndex = 7
         '
         'lstSelectedPoints
         '
         Me.lstSelectedPoints.FormattingEnabled = True
+        Me.lstSelectedPoints.ItemHeight = 16
         Me.lstSelectedPoints.Location = New System.Drawing.Point(143, 12)
         Me.lstSelectedPoints.Name = "lstSelectedPoints"
         Me.lstSelectedPoints.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended
-        Me.lstSelectedPoints.Size = New System.Drawing.Size(104, 277)
+        Me.lstSelectedPoints.Size = New System.Drawing.Size(104, 276)
         Me.lstSelectedPoints.TabIndex = 8
         '
         'btnChoosePoints
@@ -186,7 +197,7 @@ Partial Class Form1
         Me.lblChoosePoints.AutoSize = True
         Me.lblChoosePoints.Location = New System.Drawing.Point(343, 20)
         Me.lblChoosePoints.Name = "lblChoosePoints"
-        Me.lblChoosePoints.Size = New System.Drawing.Size(271, 13)
+        Me.lblChoosePoints.Size = New System.Drawing.Size(335, 16)
         Me.lblChoosePoints.TabIndex = 5
         Me.lblChoosePoints.Text = "Select items from list on left and click to move them over"
         '
@@ -199,20 +210,11 @@ Partial Class Form1
         Me.btnMoveToAll.Text = "Move to All"
         Me.btnMoveToAll.UseVisualStyleBackColor = True
         '
-        'lblMultiSelect
-        '
-        Me.lblMultiSelect.AutoSize = True
-        Me.lblMultiSelect.Location = New System.Drawing.Point(343, 136)
-        Me.lblMultiSelect.Name = "lblMultiSelect"
-        Me.lblMultiSelect.Size = New System.Drawing.Size(358, 13)
-        Me.lblMultiSelect.TabIndex = 5
-        Me.lblMultiSelect.Text = "Select multiple items and hopefully the mouse will move to each one in turn"
-        '
         'numRepeat
         '
         Me.numRepeat.Location = New System.Drawing.Point(126, 45)
         Me.numRepeat.Name = "numRepeat"
-        Me.numRepeat.Size = New System.Drawing.Size(54, 20)
+        Me.numRepeat.Size = New System.Drawing.Size(54, 22)
         Me.numRepeat.TabIndex = 7
         Me.numRepeat.Visible = False
         '
@@ -221,7 +223,7 @@ Partial Class Form1
         Me.rdoPlayback.AutoSize = True
         Me.rdoPlayback.Location = New System.Drawing.Point(6, 45)
         Me.rdoPlayback.Name = "rdoPlayback"
-        Me.rdoPlayback.Size = New System.Drawing.Size(116, 17)
+        Me.rdoPlayback.Size = New System.Drawing.Size(143, 20)
         Me.rdoPlayback.TabIndex = 9
         Me.rdoPlayback.TabStop = True
         Me.rdoPlayback.Text = "Play Saved Pattern"
@@ -232,7 +234,7 @@ Partial Class Form1
         Me.rdoRecord.AutoSize = True
         Me.rdoRecord.Location = New System.Drawing.Point(6, 19)
         Me.rdoRecord.Name = "rdoRecord"
-        Me.rdoRecord.Size = New System.Drawing.Size(97, 17)
+        Me.rdoRecord.Size = New System.Drawing.Size(118, 20)
         Me.rdoRecord.TabIndex = 9
         Me.rdoRecord.TabStop = True
         Me.rdoRecord.Text = "Record Pattern"
@@ -243,7 +245,7 @@ Partial Class Form1
         Me.rdoRepeat.AutoSize = True
         Me.rdoRepeat.Location = New System.Drawing.Point(6, 45)
         Me.rdoRepeat.Name = "rdoRepeat"
-        Me.rdoRepeat.Size = New System.Drawing.Size(114, 17)
+        Me.rdoRepeat.Size = New System.Drawing.Size(138, 20)
         Me.rdoRepeat.TabIndex = 9
         Me.rdoRepeat.TabStop = True
         Me.rdoRepeat.Text = "Repeat the pattern"
@@ -263,7 +265,7 @@ Partial Class Form1
         Me.Label3.AutoSize = True
         Me.Label3.Location = New System.Drawing.Point(343, 49)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(153, 13)
+        Me.Label3.Size = New System.Drawing.Size(190, 16)
         Me.Label3.TabIndex = 12
         Me.Label3.Text = "Clear everything and start fresh"
         '
@@ -272,7 +274,7 @@ Partial Class Form1
         Me.Label4.AutoSize = True
         Me.Label4.Location = New System.Drawing.Point(186, 24)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(215, 13)
+        Me.Label4.Size = New System.Drawing.Size(276, 16)
         Me.Label4.TabIndex = 13
         Me.Label4.Text = "Speed between mouse moves (milliseconds)"
         '
@@ -281,7 +283,7 @@ Partial Class Form1
         Me.lblRepetitions.AutoSize = True
         Me.lblRepetitions.Location = New System.Drawing.Point(186, 47)
         Me.lblRepetitions.Name = "lblRepetitions"
-        Me.lblRepetitions.Size = New System.Drawing.Size(114, 13)
+        Me.lblRepetitions.Size = New System.Drawing.Size(142, 16)
         Me.lblRepetitions.TabIndex = 13
         Me.lblRepetitions.Text = "How many repetitions?"
         Me.lblRepetitions.Visible = False
@@ -334,10 +336,70 @@ Partial Class Form1
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Playback and Recording"
         '
+        'GroupBox3
+        '
+        Me.GroupBox3.AutoSize = True
+        Me.GroupBox3.Controls.Add(Me.numRepetitionSpeed)
+        Me.GroupBox3.Controls.Add(Me.numClicks)
+        Me.GroupBox3.Controls.Add(Me.lblRepetitionSpeed)
+        Me.GroupBox3.Controls.Add(Me.rdoRepeatClick)
+        Me.GroupBox3.Controls.Add(Me.btnMoveClickRepeat)
+        Me.GroupBox3.Location = New System.Drawing.Point(473, 206)
+        Me.GroupBox3.Name = "GroupBox3"
+        Me.GroupBox3.Size = New System.Drawing.Size(334, 120)
+        Me.GroupBox3.TabIndex = 18
+        Me.GroupBox3.TabStop = False
+        '
+        'rdoRepeatClick
+        '
+        Me.rdoRepeatClick.AutoSize = True
+        Me.rdoRepeatClick.Location = New System.Drawing.Point(7, 22)
+        Me.rdoRepeatClick.Name = "rdoRepeatClick"
+        Me.rdoRepeatClick.Size = New System.Drawing.Size(243, 20)
+        Me.rdoRepeatClick.TabIndex = 0
+        Me.rdoRepeatClick.TabStop = True
+        Me.rdoRepeatClick.Text = "Move to a point and click repeatedly"
+        Me.rdoRepeatClick.UseVisualStyleBackColor = True
+        '
+        'numClicks
+        '
+        Me.numClicks.Location = New System.Drawing.Point(31, 44)
+        Me.numClicks.Maximum = New Decimal(New Integer() {10000000, 0, 0, 0})
+        Me.numClicks.Name = "numClicks"
+        Me.numClicks.Size = New System.Drawing.Size(120, 22)
+        Me.numClicks.TabIndex = 1
+        '
+        'btnMoveClickRepeat
+        '
+        Me.btnMoveClickRepeat.Location = New System.Drawing.Point(157, 44)
+        Me.btnMoveClickRepeat.Name = "btnMoveClickRepeat"
+        Me.btnMoveClickRepeat.Size = New System.Drawing.Size(93, 23)
+        Me.btnMoveClickRepeat.TabIndex = 4
+        Me.btnMoveClickRepeat.Text = "Move + Click"
+        Me.btnMoveClickRepeat.UseVisualStyleBackColor = True
+        '
+        'numRepetitionSpeed
+        '
+        Me.numRepetitionSpeed.Location = New System.Drawing.Point(31, 72)
+        Me.numRepetitionSpeed.Maximum = New Decimal(New Integer() {1000, 0, 0, 0})
+        Me.numRepetitionSpeed.Name = "numRepetitionSpeed"
+        Me.numRepetitionSpeed.Size = New System.Drawing.Size(120, 22)
+        Me.numRepetitionSpeed.TabIndex = 1
+        '
+        'lblRepetitionSpeed
+        '
+        Me.lblRepetitionSpeed.AutoSize = True
+        Me.lblRepetitionSpeed.Location = New System.Drawing.Point(157, 74)
+        Me.lblRepetitionSpeed.Name = "lblRepetitionSpeed"
+        Me.lblRepetitionSpeed.Size = New System.Drawing.Size(171, 16)
+        Me.lblRepetitionSpeed.TabIndex = 13
+        Me.lblRepetitionSpeed.Text = "Time in between clicks (ms)"
+        '
         'Form1
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
-        Me.ClientSize = New System.Drawing.Size(769, 412)
+        Me.ClientSize = New System.Drawing.Size(945, 525)
+        Me.Controls.Add(Me.GroupBox3)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.Label3)
@@ -345,7 +407,6 @@ Partial Class Form1
         Me.Controls.Add(Me.lstSelectedPoints)
         Me.Controls.Add(Me.lblInfo)
         Me.Controls.Add(Me.chkOnTop)
-        Me.Controls.Add(Me.lblMultiSelect)
         Me.Controls.Add(Me.lblChoosePoints)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
@@ -365,6 +426,10 @@ Partial Class Form1
         Me.GroupBox1.PerformLayout()
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
+        Me.GroupBox3.ResumeLayout(False)
+        Me.GroupBox3.PerformLayout()
+        CType(Me.numClicks, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.numRepetitionSpeed, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -385,7 +450,6 @@ Partial Class Form1
     Friend WithEvents btnChoosePoints As System.Windows.Forms.Button
     Friend WithEvents lblChoosePoints As System.Windows.Forms.Label
     Friend WithEvents btnMoveToAll As System.Windows.Forms.Button
-    Friend WithEvents lblMultiSelect As System.Windows.Forms.Label
     Friend WithEvents numRepeat As System.Windows.Forms.NumericUpDown
     Friend WithEvents rdoPlayback As System.Windows.Forms.RadioButton
     Friend WithEvents rdoRecord As System.Windows.Forms.RadioButton
@@ -398,5 +462,10 @@ Partial Class Form1
     Friend WithEvents btnRecord As System.Windows.Forms.Button
     Friend WithEvents btnPlay As System.Windows.Forms.Button
     Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
-
+    Friend WithEvents GroupBox3 As GroupBox
+    Friend WithEvents numClicks As NumericUpDown
+    Friend WithEvents rdoRepeatClick As RadioButton
+    Friend WithEvents btnMoveClickRepeat As Button
+    Friend WithEvents numRepetitionSpeed As NumericUpDown
+    Friend WithEvents lblRepetitionSpeed As Label
 End Class

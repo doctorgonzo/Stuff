@@ -204,6 +204,8 @@ Public Class Form1
             lstMousePos.Items.Clear()
             lstSelectedPoints.Items.Clear()
             btnPlay.Visible = True
+        Else
+            btnPlay.Visible = False
         End If
     End Sub
 
@@ -250,5 +252,17 @@ Public Class Form1
             End If
             r.Close()
         End If
+    End Sub
+
+    Private Sub btnMoveClickRepeat_Click(sender As Object, e As EventArgs) Handles btnMoveClickRepeat.Click
+        Dim lastItem As Point
+        lastItem = lstMousePos.SelectedItem
+        Cursor.Position = lastItem
+        For index = 0 To numClicks.Value
+            mouse_click(1, "down")
+            mouse_click(1, "up")
+            lstMousePos.Focus()
+            System.Threading.Thread.Sleep(numRepetitionSpeed.Value)
+        Next
     End Sub
 End Class

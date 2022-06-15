@@ -33,9 +33,10 @@ Partial Class frmIntro
         Me.lblTitle.BackColor = System.Drawing.Color.Transparent
         Me.lblTitle.Font = New System.Drawing.Font("Microsoft Sans Serif", 36.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblTitle.ForeColor = System.Drawing.Color.DarkOrange
-        Me.lblTitle.Location = New System.Drawing.Point(0, 389)
+        Me.lblTitle.Location = New System.Drawing.Point(0, 479)
+        Me.lblTitle.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblTitle.Name = "lblTitle"
-        Me.lblTitle.Size = New System.Drawing.Size(481, 62)
+        Me.lblTitle.Size = New System.Drawing.Size(641, 76)
         Me.lblTitle.TabIndex = 0
         Me.lblTitle.Text = "Bored? Get ready..."
         '
@@ -45,12 +46,13 @@ Partial Class frmIntro
         '
         'frmIntro
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackgroundImage = Global.Bored_as_Hell.My.Resources.Resources.enhanced_buzz_15937_1279209391_4
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.ClientSize = New System.Drawing.Size(631, 449)
+        Me.ClientSize = New System.Drawing.Size(841, 553)
         Me.Controls.Add(Me.lblTitle)
+        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Name = "frmIntro"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Bored as Hell?"
